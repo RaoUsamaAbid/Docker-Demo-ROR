@@ -1,24 +1,57 @@
-# README
+# Ruby on Rails ToDo App
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a simple ToDo app built with Ruby on Rails. It includes a Docker setup for local development.
 
-Things you may want to cover:
+## Prerequisites
 
-* Ruby version
+- [Docker](https://www.docker.com/products/docker-desktop) installed on your machine.
 
-* System dependencies
+## Getting Started
 
-* Configuration
+1. Clone this repository to your local machine:
 
-* Database creation
+    ```bash
+    git clone https://github.com/your-username/todo-app.git
+    cd todo-app
+    ```
 
-* Database initialization
+2. Create a `.env` file in the project root and configure your database settings:
 
-* How to run the test suite
+    ```env
+    POSTGRES_USER=postgres
+    POSTGRES_PASSWORD=postgres
+    POSTGRES_DB=todo_app_development
+    ```
 
-* Services (job queues, cache servers, search engines, etc.)
+3. Build the Docker image:
 
-* Deployment instructions
+    ```bash
+    docker-compose build
+    ```
 
-* ...
+4. Run the Docker containers:
+
+    ```bash
+    docker-compose up
+    ```
+
+5. Open a new terminal and enter the Rails container:
+
+    ```bash
+    docker exec -it web-1 bash
+    ```
+
+6. Inside the container, run the database migrations:
+
+    ```bash
+    bundle exec rails db:migrate
+    ```
+
+7. Access the application in your browser at [http://localhost:3000](http://localhost:3000).
+
+## Stopping the Application
+
+To stop the application, use the following command:
+
+```bash
+docker-compose down
