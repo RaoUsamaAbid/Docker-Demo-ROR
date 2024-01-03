@@ -1,13 +1,30 @@
-<h1>ToDo List</h1>
-
-<% @todos.each do |todo| %>
-  <div>
-    <h3><%= todo.title %></h3>
-    <p><%= todo.description %></p>
-    <p>Created at: <%= todo.created_at %></p>
-    <p>Updated at: <%= todo.updated_at %></p>
+<div class="container mt-4">
+  <div class="d-flex justify-content-between">
+    <div>
+      <h1 class="mb-4">ToDo List</h1>
+    </div>
+    <div>
+      <%= link_to 'New ToDo', new_todo_path, class: 'btn btn-success' %>
+    </div>
   </div>
-  <hr>
-<% end %>
 
-<%= link_to 'New ToDo', new_todo_path %>
+  <div class="row">
+    <% @todos.each do |todo| %>
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"><%= todo.title %></h5>
+            <p class="card-text"><%= truncate(todo.description, length: 100) %></p>
+            <p class="card-text"><small class="text-muted">Created at: <%= todo.created_at %></small></p>
+            <p class="card-text"><small class="text-muted">Updated at: <%= todo.updated_at %></small></p>
+
+            <!-- Edit button -->
+            <%= link_to 'Edit', edit_todo_path(todo), class: 'btn btn-warning btn-sm' %>
+            <%= link_to 'Details', todo_path(todo), class: 'btn btn-primary btn-sm' %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+</div>

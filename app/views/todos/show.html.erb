@@ -1,11 +1,17 @@
-<!-- app/views/todos/show.html.erb -->
+<div class="container mt-4">
+  <h1><%= @todo.title %></h1>
 
-<h1><%= @todo.title %></h1>
+  <div class="card">
+    <div class="card-body">
+      <p class="card-text"><strong>Description:</strong></p>
+      <p class="card-text"><%= simple_format(@todo.description) %></p>
+      <p class="card-text"><strong>Created at:</strong> <%= @todo.created_at %></p>
+      <p class="card-text"><strong>Updated at:</strong> <%= @todo.updated_at %></p>
 
-<p><strong>Description:</strong></p>
-<%= simple_format @todo.description %>
+      <!-- Edit button -->
+      <%= link_to 'Edit', edit_todo_path(@todo), class: 'btn btn-warning mt-3' %>
+    </div>
+  </div>
 
-<p><strong>Created at:</strong> <%= @todo.created_at %></p>
-<p><strong>Updated at:</strong> <%= @todo.updated_at %></p>
-
-<%= link_to 'Back', todos_path %>
+  <%= link_to 'Back', todos_path, class: 'btn btn-secondary mt-3' %>
+</div>
