@@ -1,0 +1,27 @@
+version: '3'
+services:
+  web:
+    build: .
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/usr/src/app
+    depends_on:
+      - db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: mypass123
+      POSTGRES_DB: todo_app_db
+      DB_POOL: 5  # Set your desired pool size
+  db:
+    image: postgres:12
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: mypass123
+      POSTGRES_DB: todo_app_db
+    ports:
+      - "5433:5432"  # Map the PostgreSQL container's port to the host
+volumes:
+  postgres_data:

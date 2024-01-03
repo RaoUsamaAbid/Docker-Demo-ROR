@@ -17,7 +17,7 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  host: <%= Rails.application.credentials[:DATABASE_HOST] %>
+  host: <%= Rails.application.credentials[:DOCKER_HOST] %>
   port: <%= Rails.application.credentials[:DATABASE_PORT] %>
   username: <%= Rails.application.credentials[:DATABASE_USERNAME] %>
   password: <%= Rails.application.credentials[:DATABASE_PASSWORD] %>
