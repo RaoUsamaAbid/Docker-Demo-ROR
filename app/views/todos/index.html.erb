@@ -1,0 +1,13 @@
+<h1>ToDo List</h1>
+
+<% @todos.each do |todo| %>
+  <div>
+    <h3><%= todo.title %></h3>
+    <p><%= todo.description %></p>
+    <p>Created at: <%= todo.created_at %></p>
+    <p>Updated at: <%= todo.updated_at %></p>
+  </div>
+  <hr>
+<% end %>
+
+<%= link_to 'New ToDo', new_todo_path %>
